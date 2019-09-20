@@ -36,6 +36,7 @@ public class DnsApp {
             this.queryType = Query.A;
             this.server = new byte[4];
 
+//            this.domainName = "www.mcgill.ca";
 //            this.server[0] = (byte)(8);
 //            this.server[1] = (byte)(8);
 //            this.server[2] = (byte)(8);
@@ -82,20 +83,14 @@ public class DnsApp {
         byte[] requestBytes = new byte[1500];
         byte[] responseBytes = new byte[1500];
 
+        // Preparing data to be sent to server
+        requestBytes = getRequest().makeDnsRequest();
+
         while (curRetryNum <= getMax_retries()) {
             try {
-
-                // Instantiations
+                // Socket and Address instantiations
                 DatagramSocket clientSocket = new DatagramSocket();
                 InetAddress destAddress = InetAddress.getByAddress(getServer());
-
-                // Preparing data to be sent to server
-                requestBytes = getRequest().makeDnsRequest();
-//            System.out.println("Data packet length: " + requestBytes.length);
-//            for (int i = 0; i < requestBytes.length; i++) {
-//                System.out.println("DNS packet byte " + (i + 1) + ": " + requestBytes[i]);
-//            }
-//            System.out.println();
 
                 // Datagram packet
                 DatagramPacket request = new DatagramPacket(requestBytes, requestBytes.length, destAddress, getPortNumber());
@@ -127,11 +122,10 @@ public class DnsApp {
                 System.out.println("Reattempting request...");
                 curRetryNum++;
             } catch(Exception e) {
-                System.out.println("ERROR\t:" + e.getMessage());
+                System.out.println("ERROR\t:" + e);
                 System.out.println("Reattempting request...");
                 curRetryNum++;
             }
-            Thread.sleep(3000);
         }
         // Error handling when max retries have been reached
         if (curRetryNum > getMax_retries()) {

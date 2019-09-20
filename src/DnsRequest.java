@@ -147,10 +147,12 @@ public class DnsRequest {
     // Calculates the QName byte length
 
     private int findQNameByteLength() {
+
         int byteLength = 0;
-        String[] tmp = getDomain().split("\\.");
-        for (int i = 0; i < tmp.length; i++) {
-            byteLength += tmp[i].length() + 1;
+        String domainName = getDomain();
+        String[] splitDomainName = domainName.split("\\.");
+        for (int i = 0; i < splitDomainName.length; i++) {
+            byteLength += splitDomainName[i].length() + 1;
         }
         // To add one more byte at the end to signal the end of a domain name
         byteLength += 1;
