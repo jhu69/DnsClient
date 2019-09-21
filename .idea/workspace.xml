@@ -6,7 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4815805-3181-4cb8-85b8-2dd48f25d380" name="Default Changelist" comment="" />
+    <list default="true" id="c4815805-3181-4cb8-85b8-2dd48f25d380" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +21,9 @@
   <component name="DefaultGradleProjectSettings">
     <option name="testRunner" value="GRADLE" />
     <option name="delegatedBuild" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1R4Divwquk9JpkQYQSs9tLebWmG" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -79,12 +84,24 @@
       <workItem from="1568917610502" duration="11000" />
       <workItem from="1568917654152" duration="191000" />
       <workItem from="1568917856458" duration="359000" />
-      <workItem from="1568918233615" duration="16894000" />
+      <workItem from="1568918233615" duration="17006000" />
+      <workItem from="1569081433196" duration="442000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
