@@ -18,5 +18,9 @@ public class DnsClient {
         } catch(Exception e) {
             System.out.println("\n" + e.getMessage());
         }
+
+
     }
+
+
 }

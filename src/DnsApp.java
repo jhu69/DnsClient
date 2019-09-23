@@ -36,11 +36,11 @@ public class DnsApp {
             this.queryType = Query.A;
             this.server = new byte[4];
 
-//            this.domainName = "www.mcgill.ca";
-//            this.server[0] = (byte)(8);
-//            this.server[1] = (byte)(8);
-//            this.server[2] = (byte)(8);
-//            this.server[3] = (byte)(8);
+            this.domainName = "www.google.ca";
+            this.server[0] = (byte)(8);
+            this.server[1] = (byte)(8);
+            this.server[2] = (byte)(8);
+            this.server[3] = (byte)(8);
 
             parseInputs(args);
             request = new DnsRequest(getDomainName(), getQueryType());
@@ -107,8 +107,14 @@ public class DnsApp {
                     long endTime = System.currentTimeMillis();
                     // Printing out response time
                     System.out.println("\n" + "Response received after: " + ((endTime - startTime) / 1000.) + " seconds " + "(" + (curRetryNum - 1) + " retries)");
+
+                    System.out.println("Packet sent: " + request.toString() + "\n");
                     System.out.println("Response from server: " + response.toString() + "\n");
+
+                    DnsResponse rsp = new DnsResponse();
+                    rsp.outputResponse(requestBytes, responseBytes);
                     clientSocket.close();
+
                     return;
                 }
 
@@ -149,7 +155,6 @@ public class DnsApp {
 
         // Temporary char holder for copying over the chars from the @____ part of the arguments
         char[] tmpChar;
-
         // Parsing the input arguments based on the query conditions supplied
         for(int i = 0; i< args.length; i++) {
             if (args[i].charAt(0) == '-' && args[i].charAt(1) == 't') {
@@ -185,6 +190,7 @@ public class DnsApp {
                 this.domainName = args[i];
             }
          }
+
     }
 
     public DnsRequest getRequest() {
