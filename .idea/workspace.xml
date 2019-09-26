@@ -7,13 +7,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c4815805-3181-4cb8-85b8-2dd48f25d380" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/DnsResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/redaelkhili.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DnsClient/DnsApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DnsClient/DnsApp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DnsClient/DnsClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DnsClient/DnsClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DnsClient/DnsRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DnsClient/DnsRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DnsClient/DnsResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DnsClient/DnsResponse.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DnsApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DnsApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DnsClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DnsClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DnsRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DnsRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DnsResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DnsResponse.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -100,7 +104,7 @@
       <workItem from="1568917856458" duration="359000" />
       <workItem from="1568918233615" duration="17006000" />
       <workItem from="1569081433196" duration="442000" />
-      <workItem from="1569102827048" duration="25153000" />
+      <workItem from="1569102827048" duration="72770000" />
     </task>
     <servers />
   </component>

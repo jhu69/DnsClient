@@ -64,9 +64,14 @@ public class DnsRequest {
     private void populateRequestHeader() {
 
         // Unique ID for our packet
-        byte[] randomID = new byte[2];
-        this.rand.nextBytes(randomID);
-        this.requestPacket.put(randomID);
+        //byte[] randomID = new byte[2];
+        //this.rand.nextBytes(randomID);
+        //this.requestPacket.put(randomID);
+        byte id1 = (byte) this.rand.nextInt();
+        byte id2 = (byte) this.rand.nextInt();
+        this.requestPacket.put(id1);
+        this.requestPacket.put(id2);
+
 
         // Unique ID for our packet
 //        this.requestPacket.put((byte) 0xEE); // 1st byte
@@ -86,9 +91,11 @@ public class DnsRequest {
         this.requestPacket.put( (byte) 0x01 );
         this.requestPacket.put( (byte) 0x00 );
 
+
         // putting the QDCOUNT
         this.requestPacket.put( (byte) 0x00 );
         this.requestPacket.put( (byte) 0x01 );
+
 
         // putting the ANCOUNT
         this.requestPacket.put( (byte) 0x00 );
@@ -101,6 +108,7 @@ public class DnsRequest {
         // putting the ARCOUNT
         this.requestPacket.put((byte) 0x00);
         this.requestPacket.put((byte) 0x00);
+
     }
 
     // Populates the question section
@@ -111,8 +119,10 @@ public class DnsRequest {
         for (int i = 0; i < tmp.length; i++) {
             // Put's the length of each label in first then followed by
             this.requestPacket.put((byte) tmp[i].length());
+
             for (int j = 0; j < tmp[i].length(); j++) {
                 this.requestPacket.put( (byte) (tmp[i].charAt(j)) );
+
             }
         }
 
@@ -120,11 +130,14 @@ public class DnsRequest {
         this.requestPacket.put((byte) 0x00);
 
         // Now have to add in Query type byte portion
+        this.requestPacket.put((byte) 0x00);
         this.requestPacket.put(hexToByteArray(this.typeOfRequest));
+
 
         // Adding in the QCLASS (Internet Address)
         this.requestPacket.put((byte) 0x00);
         this.requestPacket.put((byte) 0x01);
+
     }
 
     // Converts type of query request into byte version of hex representations

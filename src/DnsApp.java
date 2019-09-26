@@ -30,13 +30,13 @@ public class DnsApp {
     // Here default values of the arguments will be given to the fields of this type of instances
     public DnsApp(String[] args) {
         try {
-            this.timeOut = 5;
+            this.timeOut = 20;
             this.max_retries = 3;
             this.portNumber = 53;
-            this.queryType = Query.A;
+            this.queryType = Query.NS;
             this.server = new byte[4];
 
-            this.domainName = "www.google.ca";
+            this.domainName = "youtube.com";
             this.server[0] = (byte)(8);
             this.server[1] = (byte)(8);
             this.server[2] = (byte)(8);
