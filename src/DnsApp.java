@@ -30,17 +30,17 @@ public class DnsApp {
     // Here default values of the arguments will be given to the fields of this type of instances
     public DnsApp(String[] args) {
         try {
-            this.timeOut = 20;
+            this.timeOut = 5;
             this.max_retries = 3;
             this.portNumber = 53;
-            this.queryType = Query.NS;
+            this.queryType = Query.A;
             this.server = new byte[4];
 
-            this.domainName = "youtube.com";
-            this.server[0] = (byte)(8);
-            this.server[1] = (byte)(8);
-            this.server[2] = (byte)(8);
-            this.server[3] = (byte)(8);
+//            this.domainName = "youtube.com";
+//            this.server[0] = (byte)(8);
+//            this.server[1] = (byte)(8);
+//            this.server[2] = (byte)(8);
+//            this.server[3] = (byte)(8);
 
             parseInputs(args);
             request = new DnsRequest(getDomainName(), getQueryType());
@@ -63,7 +63,21 @@ public class DnsApp {
 
         // Required request formatting
         System.out.println("\n" + "DnsClient sending request for " + getDomainName());
-        System.out.println("Server: " + getServer().toString());
+        // Converting the byte server array into string format so its in human readable form
+        byte[] ip = getServer();
+        int[] ipAddress = new int[4];
+        int num = 0;
+        for (int i=0; i<ip.length; i++){
+            byte temp = ip[i];
+            if(temp<0){
+                num = temp + 256;
+                ipAddress[i] = num;
+            }
+            else {
+                ipAddress[i] = temp;
+            }
+        }
+        System.out.println("Server: " + ipAddress[0] + "." + ipAddress[1] + "." + ipAddress[2] + "." + ipAddress[3]);
         System.out.println("Request type: " + getQueryType() + "\n");
 
         // To display what the DNS packet byte structure look like
@@ -108,7 +122,7 @@ public class DnsApp {
                     // Printing out response time
                     System.out.println("\n" + "Response received after: " + ((endTime - startTime) / 1000.) + " seconds " + "(" + (curRetryNum - 1) + " retries)");
 
-                    System.out.println("Packet sent: " + request.toString() + "\n");
+                    System.out.println("Packet sent: " + request.toString());
                     System.out.println("Response from server: " + response.toString() + "\n");
 
                     DnsResponse rsp = new DnsResponse();
@@ -172,13 +186,12 @@ public class DnsApp {
                 for (int j = 1; j < args[i].length(); j++) {
                     tmpChar[j-1] = args[i].charAt(j);
                 }
-
-                System.out.println("Server before converting to bytes: " + new String(tmpChar));
+                //System.out.println("Server before converting to bytes: " + new String(tmpChar));
                 String truncatedServerName = new String(tmpChar);
-                String[] serverLables = truncatedServerName.split("\\.");
+                String[] serverLabels = truncatedServerName.split("\\.");
                 int ipValue;
-                for (int x = 0; x < serverLables.length; x++) {
-                    ipValue = Integer.parseInt(serverLables[x]);
+                for (int x = 0; x < serverLabels.length; x++) {
+                    ipValue = Integer.parseInt(serverLabels[x]);
                     if (ipValue < 0 || ipValue > 255) {
                         throw new NumberFormatException("ERROR\tIncorrect input syntax: IP Address numbers must be between 0 & 255 inclusive.");
                     }

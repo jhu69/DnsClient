@@ -15,7 +15,6 @@ public class DnsClient {
             DnsApp DNSApp = new DnsApp(args);
             DNSApp.printArgumentValues();
             DNSApp.makeRequestAndGetResponse();
-            byte a = (byte) 0x01;
         } catch(Exception e) {
             System.out.println("\n" + e.getMessage());
         }

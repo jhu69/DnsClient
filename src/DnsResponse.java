@@ -34,7 +34,7 @@ public class DnsResponse {
         //If there additional records in the received packet, we print them in the specified format
         if (addRecords != 0){
             System.out.println(" ");
-            System.out.println("***Additional Section " + addRecords + " records***");
+            System.out.println("***Additional Section " + addRecords + " records***" + "\n");
             String[] additionalRecords = printAdditionalRecords(receivedData)   ;
             int k = additionalRecords.length;
             for (int i=0; i<k; i++){
