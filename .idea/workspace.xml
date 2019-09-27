@@ -8,12 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c4815805-3181-4cb8-85b8-2dd48f25d380" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/DnsClient_jar/DnsClient.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/DnsClient_jar/DnsClient.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DnsClient/DnsApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DnsClient/DnsApp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DnsClient/DnsClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DnsClient/DnsClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DnsClient/DnsResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DnsClient/DnsResponse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DnsApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DnsApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DnsClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DnsClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DnsResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DnsResponse.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />

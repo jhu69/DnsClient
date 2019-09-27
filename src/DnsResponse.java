@@ -34,7 +34,7 @@ public class DnsResponse {
         //If there additional records in the received packet, we print them in the specified format
         if (addRecords != 0){
             System.out.println(" ");
-            System.out.println("***Additional Section " + addRecords + " records***" + "\n");
+            System.out.println("***Additional Section " + addRecords + " records***");
             String[] additionalRecords = printAdditionalRecords(receivedData)   ;
             int k = additionalRecords.length;
             for (int i=0; i<k; i++){
@@ -252,8 +252,8 @@ public class DnsResponse {
             System.out.println("ERROR: Class not equal to 1");
         }
 
-            //Length of the RDATA field
-            RDLength = get16bit(receivedPacket, RDLengthPosition);
+        //Length of the RDATA field
+        RDLength = get16bit(receivedPacket, RDLengthPosition);
 
         //Case where the response type is A which means RDATA holds ip addresses
         //In this case the record is an IP address of length RDLength
@@ -301,13 +301,14 @@ public class DnsResponse {
                 alias = "";
             }
         }
-
+        //Case where the type of response is NS
         else if (type == 2){
             for (int j=0; j<numberOfRecords; j++){
                 int index = rDataPosition;
                 //Print as many records as specified in the ANCount
                 for (int i = rDataPosition; i < (rDataPosition + RDLength); i = i + 1){
                     temp = receivedPacket[index];
+
                     //We stop parsing when we encounter the 0-byte
                     if(temp == 0){
                         break;
@@ -316,13 +317,15 @@ public class DnsResponse {
                     if (getBit(temp, 6) == 1 & getBit(temp, 7) == 1){
                         long offset2 = get16bit(receivedPacket, index) - 49152;
                         alias = alias + parseName(receivedPacket, (int) offset2);
+                        index = index + 2;
                         break;
                     }
                     //Parse the record that is the same format as the Qname field
                     int n = temp;
-                    for (int l = 1; l<n; l++){
+                    for (int l = 1; l<=n; l++){
                         alias = alias + (char) receivedPacket[index+l];
                     }
+                    alias = alias + ".";
                     index = index + n + 1;
                 }
                 //Record the answer in the specified format
@@ -352,9 +355,10 @@ public class DnsResponse {
                     }
                     //We parse the record which is in the same format as the qname field
                     int n = temp;
-                    for (int l = 1; l<n; l++){
+                    for (int l = 1; l<=n; l++){
                         alias = alias + (char) receivedPacket[index+l];
                     }
+                    alias = alias + ".";
                     index = index + n + 1;
 
                 }
@@ -541,12 +545,11 @@ public class DnsResponse {
                     }
 
                     int n = temp;
-                    for (int l = 1; l<n; l++){
+                    for (int l = 1; l<=n; l++){
                         additionalAlias = additionalAlias + (char) receivedPacket[index+l];
                     }
-
+                    additionalAlias = additionalAlias + ".";
                     index = index + n + 1;
-
                 }
                 additionalRecords[j] = responseTypeString + " " + additionalAlias + " " + secondsCache + " " + authority;
                 additionalAlias = "";
@@ -571,10 +574,11 @@ public class DnsResponse {
                     }
 
                     int n = temp;
-                    for (int l = 1; l<n; l++){
+                    for (int l = 1; l<=n; l++){
                         additionalAlias = additionalAlias + (char) receivedPacket[index+l];
                     }
                     index = index + n + 1;
+                    additionalAlias = additionalAlias + ".";
 
                 }
                 additionalRecords[j] = responseTypeString + " " + "Preference: " + preference + " " + "Exchange: " + additionalAlias + " " + secondsCache + " " + authority;
@@ -622,5 +626,4 @@ public class DnsResponse {
 
         return result;
     }
-
 }
